@@ -1,1 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nazma ❤️ Nazrul | Anniversary</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia, "Times New Roman", serif;
+    background:#09070a;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+.section{
+    min-height:100vh;
+    display:none;
+    position:relative;
+    overflow:hidden;
+    align-items:center;
+    justify-content:center;
+    padding:30px 20px;
+}
+
+.section.active{
+    display:flex;
+    animation:sectionIn 1s ease;
+}
+
+@keyframes sectionIn{
+    from{
+        opacity:0;
+        transform:scale(1.04);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* BACKGROUND */
+.bg-glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(255,40,100,.12);
+    filter:blur(100px);
+    pointer-events:none;
+}
+
+.bg-glow.one{
+    top:-200px;
+    left:-200px;
+}
+
+.bg-glow.two{
+    bottom:-250px;
+    right:-200px;
+}
+
+/* STARS */
+.stars{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:.7;
+    animation:twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:.15;transform:scale(.7)}
+    50%{opacity:1;transform:scale(1.5)}
+}
+
+/* COMMON */
+.content{
+    position:relative;
+    z-index:5;
+    width:100%;
+    max-width:900px;
+    text-align:center;
+}
+
+.eyebrow{
+    letter-spacing:5px;
+    text-transform:uppercase;
+    font-size:12px;
+    color:#f3b6c7;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:clamp(42px,10vw,90px);
+    line-height:1.05;
+}
+
+h2{
+    font-size:clamp(32px,7vw,65px);
+    margin-bottom:20px;
+}
+
+p{
+    font-family:Arial,sans-serif;
+    line-height:1.8;
+    color:#e7dfe3;
+}
+
+.gold{
+    color:#f3c7d5;
+}
+
+.btn{
+    border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    padding:14px 28px;
+    border-radius:50px;
+    margin-top:30px;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+    backdrop-filter:blur(10px);
+}
+
+.btn:hover{
+    background:rgba(255,255,255,.18);
+    transform:translateY(-3px);
+}
+
+/* FLOATING HEARTS */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    pointer-events:none;
+    z-index:100;
+    animation:heartUp linear forwards;
+}
+
+@keyframes heartUp{
+    to{
+        transform:translateY(-110vh) rotate(30deg);
+        opacity:0;
+    }
+}
+
+/* SECTION 1 */
+#s1{
+    background:
+    radial-gradient(circle at center,rgba(160,20,60,.2),transparent 45%),
+    #09070a;
+}
+
+.type-line{
+    min-height:35px;
+    font-size:18px;
+    color:#ddd;
+    margin-top:20px;
+    font-family:Arial,sans-serif;
+}
+
+.scroll-note{
+    margin-top:45px;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:3px;
+    opacity:.5;
+}
+
+/* SECTION 2 */
+.quote{
+    font-size:clamp(25px,5vw,46px);
+    line-height:1.4;
+    font-style:italic;
+}
+
+.quote-author{
+    margin-top:25px;
+    color:#d9a5b5;
+}
+
+/* PHOTO SECTIONS */
+.photo-wrap{
+    width:min(86vw,600px);
+    margin:25px auto;
+    position:relative;
+}
+
+.photo-wrap img{
+    display:block;
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        0 0 50px rgba(255,50,100,.12);
+}
+
+.photo-frame{
+    padding:8px;
+    border-radius:25px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.35),
+        rgba(255,255,255,.03)
+    );
+}
+
+.caption{
+    margin-top:25px;
+    font-size:clamp(22px,5vw,38px);
+}
+
+.small{
+    margin-top:10px;
+    font-size:14px;
+}
+
+/* QUIZ */
+.quiz-box{
+    max-width:600px;
+    margin:auto;
+    padding:35px 25px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(15px);
+}
+
+.question{
+    font-size:24px;
+    margin-bottom:25px;
+}
+
+.answers{
+    display:grid;
+    gap:12px;
+}
+
+.answer{
+    padding:15px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.06);
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.answer:hover{
+    background:rgba(255,255,255,.14);
+}
+
+.quiz-result{
+    margin-top:25px;
+    min-height:30px;
+    color:#f3b6c7;
+}
+
+/* LETTER */
+.letter{
+    max-width:650px;
+    margin:25px auto;
+    padding:35px 28px;
+    border-radius:20px;
+    background:
+        linear-gradient(135deg,
+        rgba(255,255,255,.10),
+        rgba(255,255,255,.025));
+    border:1px solid rgba(255,255,255,.14);
+    text-align:left;
+}
+
+.letter p{
+    margin-bottom:18px;
+}
+
+/* FINAL PHOTO */
+.final-photo-area{
+    position:relative;
+    width:min(88vw,600px);
+    margin:20px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.final-photo{
+    width:min(65vw,390px);
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid rgba(255,255,255,.7);
+    position:relative;
+    z-index:5;
+    box-shadow:
+        0 0 50px rgba(255,70,120,.35),
+        0 25px 70px rgba(0,0,0,.7);
+}
+
+/* ROSE HEART */
+.rose-heart{
+    position:absolute;
+    inset:-10px;
+    z-index:10;
+    pointer-events:none;
+}
+
+.rose{
+    position:absolute;
+    font-size:30px;
+    filter:drop-shadow(0 5px 8px rgba(0,0,0,.5));
+    animation:roseGlow 2s infinite ease-in-out;
+}
+
+@keyframes roseGlow{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
+}
+
+.final-title{
+    margin-top:40px;
+    font-size:clamp(35px,8vw,70px);
+}
+
+.final-names{
+    font-size:clamp(24px,5vw,42px);
+    color:#f3b6c7;
+    margin-top:12px;
+}
+
+.petals{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.petal{
+    position:absolute;
+    top:-30px;
+    font-size:20px;
+    animation:petalFall linear forwards;
+}
+
+@keyframes petalFall{
+    to{
+        top:110%;
+        transform:rotate(500deg);
+    }
+}
+
+/* PROGRESS */
+.progress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:3px;
+    background:#f0a8bd;
+    width:0%;
+    z-index:999;
+    transition:width .5s;
+}
+
+.counter{
+    position:fixed;
+    right:15px;
+    top:15px;
+    z-index:999;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    opacity:.5;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .section{
+        padding:25px 15px;
+    }
+
+    .photo-wrap{
+        width:88vw;
+    }
+
+    .letter{
+        padding:25px 20px;
+    }
+
+    .rose{
+        font-size:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="counter" id="counter">01 / 09</div>
+
+<!-- 01 -->
+<section class="section active" id="s1">
+    <div class="stars" id="stars"></div>
+    <div class="bg-glow one"></div>
+    <div class="bg-glow two"></div>
+
+    <div class="content">
+        <div class="eyebrow">A Little Surprise</div>
+
+        <h1>
+            For <span class="gold">Two Hearts</span>
+        </h1>
+
+        <div class="type-line" id="typing"></div>
+
+        <button class="btn" onclick="nextSection()">
+            Begin The Journey ❤️
+        </button>
+
+        <div class="scroll-note">
+            A little story made with love
+        </div>
+    </div>
+</section>
+
+
+<!-- 02 -->
+<section class="section" id="s2">
+    <div class="bg-glow one"></div>
+
+    <div class="content">
+        <div class="eyebrow">Once Upon A Time</div>
+
+        <div class="quote">
+            “Some stories are written in books,
+            but the most beautiful ones are written
+            in two people's lives.”
+        </div>
+
+        <div class="quote-author">
+            Nazma Akter ❤️ Nazrul Islam
+        </div>
+
+        <button class="btn" onclick="nextSection()">
+            Continue ✨
+        </button>
+    </div>
+</section>
+
+
+<!-- 03 -->
+<section class="section" id="s3">
+    <div class="content">
+
+        <div class="eyebrow">The Beginning</div>
+
+        <div class="photo-wrap photo-frame">
+            <img src="images/photo1.jpg" alt="Memory 1">
+        </div>
+
+        <div class="caption">
+            Every beautiful journey has a beginning. 💍
+        </div>
+
+        <p class="small">
+            And this was the beginning of something beautiful.
+        </p>
+
+        <button class="btn" onclick="nextSection()">
+            Next Memory ❤️
+        </button>
+    </div>
+</section>
+
+
+<!-- 04 -->
+<section class="section" id="s4">
+    <div class="content">
+
+        <div class="eyebrow">Two Hearts · One Journey</div>
+
+        <div class="photo-wrap photo-frame">
+            <img src="images/photo2.jpg" alt="Memory 2">
+        </div>
+
+        <div class="caption">
+            Two people. One beautiful journey.
+        </div>
+
+        <p class="small">
+            Through ordinary days, they created extraordinary memories.
+        </p>
+
+        <button class="btn" onclick="nextSection()">
+            Keep Going 🌹
+        </button>
+    </div>
+</section>
+
+
+<!-- 05 -->
+<section class="section" id="s5">
+    <div class="content">
+
+        <div class="eyebrow">Beautiful Memories</div>
+
+        <div class="photo-wrap photo-frame">
+            <img src="images/photo3.jpg" alt="Memory 3">
+        </div>
+
+        <div class="caption">
+            Some moments become memories...
+        </div>
+
+        <p class="small">
+            And some memories stay in the heart forever. ❤️
+        </p>
+
+        <button class="btn" onclick="nextSection()">
+            Another Memory ✨
+        </button>
+    </div>
+</section>
+
+
+<!-- 06 -->
+<section class="section" id="s6">
+    <div class="content">
+
+        <div class="eyebrow">The Little Things</div>
+
+        <div class="photo-wrap photo-frame">
+            <img src="images/photo4.jpg" alt="Memory 4">
+        </div>
+
+        <div class="caption">
+            Love lives in the little things. 🥰
+        </div>
+
+        <p class="small">
+            A smile. A conversation. A little care. A thousand tiny moments.
+        </p>
+
+        <button class="btn" onclick="nextSection()">
+            One More ❤️
+        </button>
+    </div>
+</section>
+
+
+<!-- 07 QUIZ -->
+<section class="section" id="s7">
+    <div class="content">
+
+        <div class="eyebrow">A Tiny Challenge 😄</div>
+
+        <h2>Let's Test The Couple!</h2>
+
+        <div class="quiz-box">
+
+            <div class="question" id="question">
+                Who is more likely to say “Sorry” first? 😏
+            </div>
+
+            <div class="answers">
+                <button class="answer" onclick="quizAnswer()">
+                    Nazma ❤️
+                </button>
+
+                <button class="answer" onclick="quizAnswer()">
+                    Nazrul ❤️
+                </button>
+
+                <button class="answer" onclick="quizAnswer()">
+                    Definitely both 😂
+                </button>
+            </div>
+
+            <div class="quiz-result" id="quizResult"></div>
+
+        </div>
+
+        <button class="btn" id="quizNext" style="display:none" onclick="nextSection()">
+            Okay, You Passed! 😂❤️
+        </button>
+
+    </div>
+</section>
+
+
+<!-- 08 LETTER -->
+<section class="section" id="s8">
+    <div class="content">
+
+        <div class="eyebrow">A Letter From Your Little Brother</div>
+
+        <div class="photo-wrap photo-frame">
+            <img src="images/photo5.jpg" alt="Memory 5">
+        </div>
+
+        <div class="letter">
+
+            <p>Dear Nazma Akter & Nazrul Islam,</p>
+
+            <p>
+                জীবনের প্রতিটি সম্পর্কের সৌন্দর্য তার বড় বড়
+                মুহূর্তে নয়, বরং ছোট ছোট যত্ন, হাসি,
+                অভিমান আর একে অপরের পাশে থাকার মধ্যে।
+            </p>
+
+            <p>
+                তোমাদের একসাথে পথচলার প্রতিটি বছর
+                যেন নতুন কোনো সুন্দর গল্পের শুরু হয়।
+                সুখের দিনে যেমন একসাথে থাকবে,
+                তেমনি কঠিন সময়েও একে অপরের হাত শক্ত করে ধরে রাখবে।
+            </p>
+
+            <p>
+                তোমাদের ঘর ভরে উঠুক শান্তি, ভালোবাসা,
+                হাসি আর অসংখ্য সুন্দর স্মৃতিতে।
+            </p>
+
+            <p>
+                অনেক অনেক ভালোবাসা ও শুভকামনা। ❤️
+            </p>
+
+            <p style="text-align:right;">
+                With Love,<br>
+                Your Little Brother ❤️
+            </p>
+
+        </div>
+
+        <button class="btn" onclick="nextSection()">
+            One Last Surprise 🎁
+        </button>
+
+    </div>
+</section>
+
+
+<!-- 09 FINAL -->
+<section class="section" id="s9">
+    <div class="stars"></div>
+    <div class="petals" id="petals"></div>
+
+    <div class="content">
+
+        <div class="eyebrow">
+            And Here Comes The Final Surprise
+        </div>
+
+        <div class="final-photo-area">
+
+            <div class="rose-heart">
+
+                <!-- HEART SHAPE MADE WITH ROSES -->
+                <span class="rose" style="left:42%;top:-3%;">🌹</span>
+                <span class="rose" style="left:28%;top:2%;">🌹</span>
+                <span class="rose" style="left:56%;top:2%;">🌹</span>
+
+                <span class="rose" style="left:16%;top:10%;">🌹</span>
+                <span class="rose" style="left:68%;top:10%;">🌹</span>
+
+                <span class="rose" style="left:7%;top:23%;">🌹</span>
+                <span class="rose" style="left:78%;top:23%;">🌹</span>
+
+                <span class="rose" style="left:2%;top:38%;">🌹</span>
+                <span class="rose" style="left:83%;top:38%;">🌹</span>
+
+                <span class="rose" style="left:5%;top:54%;">🌹</span>
+                <span class="rose" style="left:80%;top:54%;">🌹</span>
+
+                <span class="rose" style="left:13%;top:69%;">🌹</span>
+                <span class="rose" style="left:71%;top:69%;">🌹</span>
+
+                <span class="rose" style="left:23%;top:82%;">🌹</span>
+                <span class="rose" style="left:61%;top:82%;">🌹</span>
+
+                <span class="rose" style="left:34%;top:91%;">🌹</span>
+                <span class="rose" style="left:50%;top:91%;">🌹</span>
+
+            </div>
+
+            <img
+                class="final-photo"
+                src="images/photo9.jpg"
+                alt="Nazma and Nazrul"
+            >
+
+        </div>
+
+        <div class="final-title">
+            Happy Wedding Anniversary ❤️
+        </div>
+
+        <div class="final-names">
+            Nazma Akter & Nazrul Islam
+        </div>
+
+        <p style="margin-top:20px;">
+            May your beautiful story continue,
+            one beautiful chapter after another. 🌹
+        </p>
+
+        <button class="btn" onclick="restartJourney()">
+            Watch Again ❤️
+        </button>
+
+    </div>
+</section>
+
+
+<script>
+
+/* CREATE STARS */
+const starsContainer = document.getElementById("stars");
+
+for(let i=0;i<70;i++){
+
+    const star=document.createElement("span");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.animationDelay=(Math.random()*3)+"s";
+
+    starsContainer.appendChild(star);
+}
+
+
+/* TYPING EFFECT */
+const text =
+"Because today is not just another day... It is their special day. ❤️";
+
+let typingIndex=0;
+
+function typeText(){
+
+    if(typingIndex<text.length){
+
+        document.getElementById("typing").textContent +=
+        text.charAt(typingIndex);
+
+        typingIndex++;
+
+        setTimeout(typeText,45);
+    }
+}
+
+setTimeout(typeText,700);
+
+
+/* SECTION CONTROL */
+let current=1;
+const total=9;
+
+function showSection(number){
+
+    document.querySelectorAll(".section").forEach(section=>{
+        section.classList.remove("active");
+    });
+
+    document.getElementById("s"+number).classList.add("active");
+
+    current=number;
+
+    document.getElementById("counter").textContent =
+    String(current).padStart(2,"0")+" / 09";
+
+    document.getElementById("progress").style.width =
+    ((current-1)/(total-1))*100+"%";
+
+    window.scrollTo(0,0);
+
+    if(current===9){
+        createPetals();
+        createHearts();
+    }
+}
+
+function nextSection(){
+
+    if(current<total){
+        showSection(current+1);
+    }
+}
+
+
+/* HEARTS */
+function createHearts(){
+
+    for(let i=0;i<15;i++){
+
+        setTimeout(()=>{
+
+            const heart=document.createElement("div");
+
+            heart.className="heart";
+            heart.textContent =
+            ["❤️","💗","💕","💖"][Math.floor(Math.random()*4)];
+
+            heart.style.left=Math.random()*100+"%";
+            heart.style.animationDuration =
+            (5+Math.random()*5)+"s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },10000);
+
+        },i*250);
+    }
+}
+
+
+/* ROSE PETALS */
+function createPetals(){
+
+    const container=document.getElementById("petals");
+
+    container.innerHTML="";
+
+    for(let i=0;i<35;i++){
+
+        const petal=document.createElement("span");
+
+        petal.className="petal";
+        petal.textContent="🌹";
+
+        petal.style.left=Math.random()*100+"%";
+
+        petal.style.animationDuration =
+        (5+Math.random()*6)+"s";
+
+        petal.style.animationDelay =
+        Math.random()*5+"s";
+
+        petal.style.fontSize =
+        (12+Math.random()*12)+"px";
+
+        container.appendChild(petal);
+    }
+}
+
+
+/* QUIZ */
+function quizAnswer(){
+
+    document.getElementById("quizResult").textContent =
+    "Whatever the answer is... the real answer is LOVE. ❤️😂";
+
+    document.querySelectorAll(".answer").forEach(button=>{
+        button.disabled=true;
+        button.style.opacity=".5";
+    });
+
+    document.getElementById("quizNext").style.display="inline-block";
+}
+
+
+/* RESTART */
+function restartJourney(){
+
+    document.getElementById("typing").textContent="";
+    typingIndex=0;
+
+    document.querySelectorAll(".answer").forEach(button=>{
+        button.disabled=false;
+        button.style.opacity="1";
+    });
+
+    document.getElementById("quizResult").textContent="";
+    document.getElementById("quizNext").style.display="none";
+
+    showSection(1);
+
+    setTimeout(typeText,700);
+}
+
+</script>
+
+</body>
+</html>
